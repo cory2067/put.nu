@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>put.nu</title>
+	<meta charset="utf-8">
+	<meta name="theme-color" content="#34A088">
+	<meta name="description" content="Free file hosting and URL shortener.">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+	<meta name="keywords" content="hosting, file hosting, URL shortener, paste, upload">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+</head>
+
+<body>
+	<div id="loadtext" style="opacity: 0;"></div>
+	<div id="wrapper">
+		<div id="loading"></div>
+
+		<header>
+			<h1 id="banner"><a href="/">put.nu</a></h1>
+			<h2>free file hosting ● <a href="about.html" style="text-decoration: underline; color: #EEEEEE;">about</a></h2>
+		</header>
+		<div id="content">
+
+			<div id="main">
+				<div class="big">drag</div>
+				<div class="small">a file, link, or text</div>
+				<div class="big">double click</div>
+				<div class="small">to upload a file</div>
+				<div class="big">paste</div>
+				<div class="small">a link, image, or text</div>
+
+				<div class="hide" id="mbig">long tap</div>
+				<div class="hide" id="msmall">to upload a file</div>
+			</div>
+
+			<div id="popup">
+				<img src="upload.png" alt="Upload">
+			</div>
+		</div>
+	</div>
+
+	<footer>
+
+		<p id="lifet" style="font-size:18px;line-height:0.2em;margin-top:12px">host file for</p>
+		<p id="life" style="margin-top:8px">
+			<a class="lifechange" id="ldown" href="#">[-]</a>
+			<span id="lifespan">3 days</span>
+			<a class="lifechange" id="lup" href="#">[+]</a>
+		</p>
+
+	</footer>
+	<input id="file-upload" type="file" />
+	<script src="js/script.js"></script>
+</body>
+
+</html>
