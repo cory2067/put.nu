@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>put.nu</title>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="theme-color" content="#34A088">
 	<meta name="description" content="Free file hosting and URL shortener.">
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
 	<meta name="keywords" content="hosting, file hosting, URL shortener, paste, upload">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 
+<style>
+html, body {
+	font-family: 'Maven Pro', sans-serif;
+	background-color: #f4f4f4
+}
+#header {
+	background: #34A088;
+	padding: 10px;
+	text-align: center;
+}
+h1 {
+	color: #EEEEEE;
+	font-size: 64px;
+	font-weight: 600;
+	margin: 0em;
+}
+h3 {
+	color: #EEEEEE;
+	margin-bottom: 0.5em;
+	font-size: 22px;
+}
+#panel {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 8px;
+}
+#panel i {
+	color: #EEEEEE;
+	font-size: 36px;
+}
+#panel button {
+	background-color: #248872;
+	border-color: #0b5243;
+}
+</style>
 <body>
-	<div id="loadtext" style="opacity: 0;"></div>
-	<div id="wrapper">
-		<div id="loading"></div>
-
-		<header>
-			<h1 id="banner"><a href="/">put.nu</a></h1>
-			<h2>free file hosting ● <a href="about.html" style="text-decoration: underline; color: #EEEEEE;">about</a></h2>
-		</header>
-		<div id="content">
-
-			<div id="main">
-				<div class="big">drag</div>
-				<div class="small">a file, link, or text</div>
-				<div class="big">double click</div>
-				<div class="small">to upload a file</div>
-				<div class="big">paste</div>
-				<div class="small">a link, image, or text</div>
-
-				<div class="hide" id="mbig">long tap</div>
-				<div class="hide" id="msmall">to upload a file</div>
-			</div>
-
-			<div id="popup">
-				<img src="upload.png" alt="Upload">
-			</div>
+	<div id="header">
+		<h1>put.nu</h1>
+		<h3>free file hosting</h3>
+	</div>
+	<div id="panel">
+		<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My files">
+			<i class="fa fa-folder"></i>
+		</button>
+		<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My links">
+			<i class="fa fa-link"></i>
+		</button>
+		<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign out">
+			<i class="fa fa-sign-out"></i>
+		</button>
+		<!-- <i class="fa fa-sign-in"></i> -->
+	</div>
+	<div class="container main">
+		<div class="row">
+			<p>drag</p>
 		</div>
 	</div>
+	<div class="fixed-bottom">
+		oooh henlo
+	</div>
 
-	<footer>
-
-		<p id="lifet" style="font-size:18px;line-height:0.2em;margin-top:12px">host file for</p>
-		<p id="life" style="margin-top:8px">
-			<a class="lifechange" id="ldown" href="#">[-]</a>
-			<span id="lifespan">3 days</span>
-			<a class="lifechange" id="lup" href="#">[+]</a>
-		</p>
-
-	</footer>
-	<input id="file-upload" type="file" />
-	<script src="js/script.js"></script>
+	<input id="file-upload" style="display: none" type="file" />
+	<script src="{{url_for('static', filename='index.js')}}"></script>
 </body>
 
 </html>
