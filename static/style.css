@@ -47,3 +47,23 @@ footer p {
 	color: #eee;
 	font-size: 24px;
 }
+.bigtext {
+	color: #272727;
+    font-size: 80px;
+    line-height: 1.2;
+    margin-top: 40px;
+}
+.smalltext {
+	color: #646464;
+	font-size: 32px;
+    margin-bottom: 40px;
+}
+.bigtext p, .smalltext p {
+    margin: 0 auto;
+}
+.fullscreen {
+    position: absolute;
+    top: 133px;
+    bottom: 62px;
+    width: 100%;
+}
