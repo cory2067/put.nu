@@ -80,9 +80,25 @@ footer p {
 	font-size: 32px;
 	margin: 0;
 }
+.mobile-container {
+	display: none;
+}
 
 @media screen and (max-height: 615px) {
 	.text-container {
 		flex-direction: row;
+	}
+}
+
+@media only screen and (max-device-width: 480px) {
+	#panel {
+		position: relative;
+	}
+	.text-container {
+		display: none;
+	}
+	.mobile-container {
+		margin: 0 auto;
+		display: block;
 	}
 }
