@@ -28,7 +28,7 @@ header {
 	width: 100%;
 }
 .text-container > div {
-	flex: 1;
+	flex: auto;
 	padding: 24px;
 }
 h1 {
@@ -72,12 +72,17 @@ footer p {
 .bigtext {
 	color: #272727;
     font-size: 80px;
-    line-height: 0.6;
+    line-height: 0.9;
+	margin-bottom: 4px;
 }
 .smalltext {
 	color: #646464;
 	font-size: 32px;
+	margin: 0;
 }
-.bigtext p, .smalltext p {
-    margin: 0 auto;
+
+@media screen and (max-height: 615px) {
+	.text-container {
+		flex-direction: row;
+	}
 }
