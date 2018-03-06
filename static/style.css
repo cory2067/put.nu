@@ -1,12 +1,27 @@
 
 html, body {
 	font-family: 'Maven Pro', sans-serif;
-	background-color: #f4f4f4
 }
-#header {
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background: #f4f4f4;
+	text-align: center;
+	justify-content: center
+}
+main {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+header {
 	background: #34A088;
 	padding: 10px;
-	text-align: center;
+}
+.text-container {
+	margin: 0 auto;
 }
 h1 {
 	color: #EEEEEE;
@@ -38,14 +53,13 @@ h3 {
 	border-color: #0b5243;
 }
 footer {
-	text-align: center;
 	background: #3d3d3d;
-	height: 62px;
+	padding: 5px;
 }
 footer p {
-	margin-top: 5px;
 	color: #eee;
 	font-size: 24px;
+	margin-bottom: 0;
 }
 .bigtext {
 	color: #272727;
@@ -60,10 +74,4 @@ footer p {
 }
 .bigtext p, .smalltext p {
     margin: 0 auto;
-}
-.fullscreen {
-    position: absolute;
-    top: 133px;
-    bottom: 62px;
-    width: 100%;
 }
