@@ -22,6 +22,14 @@ header {
 }
 .text-container {
 	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+}
+.text-container > div {
+	flex: 1;
+	padding: 24px;
 }
 h1 {
 	color: #EEEEEE;
@@ -64,13 +72,11 @@ footer p {
 .bigtext {
 	color: #272727;
     font-size: 80px;
-    line-height: 1.2;
-    margin-top: 40px;
+    line-height: 0.6;
 }
 .smalltext {
 	color: #646464;
 	font-size: 32px;
-    margin-bottom: 40px;
 }
 .bigtext p, .smalltext p {
     margin: 0 auto;
