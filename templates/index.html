@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<div class="text-container">
 	<div>
 		<p class="bigtext">drag</p>
 		<p class="smalltext">a file, link, or text</p>
@@ -12,10 +13,11 @@
 		<p class="bigtext">paste</p>
 		<p class="smalltext">a link, image, or text</p>
 	</div>
-	<div class="mobile-container">
-		<p class="bigtext">long tap</p>
-		<p class="smalltext">to upload a file</p>
-	</div>
+</div>
+<div class="mobile-container">
+	<p class="bigtext">long tap</p>
+	<p class="smalltext">to upload a file</p>
+</div>
 {% endblock %}
 
 <input id="file-upload" style="display: none" type="file" />

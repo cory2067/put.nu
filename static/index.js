@@ -3,6 +3,8 @@ function read_file (f) {
         return;
     }
 
+    //https://github.com/blueimp/jQuery-File-Upload
+    console.log(f[0]);
     // now do something with file
 }
 
@@ -19,6 +21,6 @@ $(function() {
     });
 
     $("#file-upload").change(function() {
-        read_files(this.files);
+        read_file(this.files);
     })
 });
