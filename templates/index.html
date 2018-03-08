@@ -1,66 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>put.nu</title>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#34A088">
-	<meta name="description" content="Free file hosting and URL shortener.">
-	<meta name="keywords" content="hosting, file hosting, URL shortener, paste, upload">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-	<div class="wrapper">
-		<header>
-			<h1>put.nu</h1>
-			<h3>free file hosting</h3>
-		</header>
-		<div id="panel">
-			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My files">
-				<i class="fa fa-folder"></i>
-			</button>
-			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My links">
-				<i class="fa fa-link"></i>
-			</button>
-			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign out">
-				<i class="fa fa-sign-out"></i>
-			</button>
-			<!-- <i class="fa fa-sign-in"></i> -->
-		</div>
-		<main>
-			<div class="text-container">
-				<div>
-					<p class="bigtext">drag</p>
-					<p class="smalltext">a file, link, or text</p>
-				</div>
-				<div>
-					<p class="bigtext">double click</p>
-					<p class="smalltext">to upload a file</p>
-				</div>
-				<div>
-					<p class="bigtext">paste</p>
-					<p class="smalltext">a link, image, or text</p>
-				</div>
-			</div>
-			<div class="mobile-container">
-				<p class="bigtext">long tap</p>
-				<p class="smalltext">to upload a file</p>
-			</div>
-		</main>
-		<footer>
-			<p>created by meniscus memers</p>
-		</footer>
+{% extends "layout.html" %}
+{% block content %}
+	<div>
+		<p class="bigtext">drag</p>
+		<p class="smalltext">a file, link, or text</p>
 	</div>
+	<div>
+		<p class="bigtext">double click</p>
+		<p class="smalltext">to upload a file</p>
+	</div>
+	<div>
+		<p class="bigtext">paste</p>
+		<p class="smalltext">a link, image, or text</p>
+	</div>
+	<div class="mobile-container">
+		<p class="bigtext">long tap</p>
+		<p class="smalltext">to upload a file</p>
+	</div>
+{% endblock %}
 
-	<input id="file-upload" style="display: none" type="file" />
-	<script src="{{url_for('static', filename='index.js')}}"></script>
-</body>
-
-</html>
+<input id="file-upload" style="display: none" type="file" />

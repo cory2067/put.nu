@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>put.nu</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#34A088">
+	<meta name="description" content="Free file hosting and URL shortener.">
+	<meta name="keywords" content="hosting, file hosting, URL shortener, paste, upload">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<div class="alert alert-danger">
+	    <ul class=flashes>
+	    {% for message in messages %}
+	      <li>{{ message }}</li>
+	    {% endfor %}
+	    </ul>
+		</div>
+	  {% endif %}
+	{% endwith %}
+	<div class="wrapper">
+		<header>
+			<h1>put.nu</h1>
+			<h3>free file hosting</h3>
+		</header>
+		<div id="panel">
+			{% if logged_in %}
+			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My files">
+				<i class="fa fa-folder"></i>
+			</button>
+			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My links">
+				<i class="fa fa-link"></i>
+			</button>
+			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign out">
+				<i class="fa fa-sign-out"></i>
+			</button>
+			{% else %}
+			<a href="/account"><button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign in">
+				<i class="fa fa-sign-in"></i>
+			</button></a>
+			{% endif %}
+		</div>
+		<main>
+			<div class="text-container">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</main>
+		<footer>
+			<p>created by meniscus memers</p>
+		</footer>
+	</div>
+
+	<input id="file-upload" style="display: none" type="file" />
+	<script src="{{url_for('static', filename='index.js')}}"></script>
+</body>
+
+</html>

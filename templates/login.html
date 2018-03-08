@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<p>eyyy guy, log in why dont ya</p>
+	<form action="/login" method="post">
+		<input required size=30 type="text" placeholder="Username" name="username">
+		<br>
+		<input required size=30 type="password" placeholder="Password" name="password">
+		<br>
+		<input class="btn btn-primary" type="submit" aria-expanded="false" value="Sign in" aria-controls="collapseExample">
+	</form>
+	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#signupContent" aria-expanded="false" aria-controls="signupContent">Register</button>
+	<div class="collapse" id="signupContent">
+		<div class="card card-block">
+			<form action="/create_account" method="post">
+				<input optional size=30 type="email" placeholder="Email (optional)" name="email">
+				<br>
+				<input optional size=30 type="text" placeholder="Username" name="username">
+				<br>
+				<input required size=30 type="password" placeholder="Password" name="password">
+				<br>
+				<input required size=30 type="password" placeholder="Reenter password" name="password2">
+				<br>
+				<input class="btn btn-primary" type="submit" value="Sign up">
+			</form>
+		</div>
+	</div>
+{% endblock %}
