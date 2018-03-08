@@ -106,6 +106,12 @@ def login():
 			flash('Account does not exist')
 			return redirect(url_for('account'))
 
+@app.route('/logout')
+def logout():
+	flask_login.logout_user()
+	flash('Logged out.')
+	return redirect(url_for('index'))
+
 def resolve_link(url): # link shortening
 	shortened = {'zucc': 'https://facebook.com'} #use a real db for this
 	if url in shortened:
