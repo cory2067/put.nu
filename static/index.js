@@ -23,4 +23,8 @@ $(function() {
     $("#file-upload").change(function() {
         read_file(this.files);
     })
+
+    setTimeout(function() {
+        $('.flash-msg').slideUp();
+    }, 1250);
 });

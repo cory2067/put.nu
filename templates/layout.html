@@ -11,23 +11,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Maven+Pro' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-		<div class="alert alert-danger">
-	    <ul class=flashes>
-	    {% for message in messages %}
-	      <li>{{ message }}</li>
-	    {% endfor %}
-	    </ul>
-		</div>
-	  {% endif %}
-	{% endwith %}
 	<div class="wrapper">
 		<header>
 			<h1>put.nu</h1>
@@ -50,6 +39,15 @@
 			</button></a>
 			{% endif %}
 		</div>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+			<div class="alert alert-primary flash-msg" role="alert">
+		    {% for message in messages %}
+		      <p class="mb-0">{{ message }}</p>
+		    {% endfor %}
+			</div>
+		  {% endif %}
+		{% endwith %}
 		<main>
 			{% block content %}
 			{% endblock %}

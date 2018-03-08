@@ -83,6 +83,9 @@ footer p {
 .mobile-container {
 	display: none;
 }
+.flash-msg {
+	text-align: center;
+}
 .no-select p {
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
