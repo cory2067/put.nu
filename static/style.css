@@ -10,6 +10,16 @@ html, body {
 	text-align: center;
 	justify-content: center
 }
+#progress {
+	background: #34A088;
+	height: 100%;
+	width: 0%;
+
+	transition: width 0.5s;
+	-webkit-transition: width 0.5s;
+	-moz-transition: width 0.5s;
+	-o-transition: width 0.5s;
+}
 main {
 	flex: 1;
 	display: flex;

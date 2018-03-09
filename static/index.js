@@ -6,6 +6,7 @@ function read_file (f) {
     var formData = new FormData();
     formData.append("file", f[0], f[0].name);
     formData.append("duration", "a LONG time"); //testing
+    $('.text-container').hide();
 
     $.ajax({
         url: '/upload',
@@ -15,12 +16,20 @@ function read_file (f) {
         processData: false,
         success: function(resp) {
             $("main").html(resp);
+        },
+        xhr: function(resp) {
+            var xhr = $.ajaxSettings.xhr();
+            xhr.upload.onprogress = function (e) {
+                // upload progress
+                if (e.lengthComputable) {
+                    var percent = 100 * e.loaded / e.total;
+                    $('#progress').css('width', percent + '%');
+                    console.log(percent);
+                }
+            };
+       return xhr;
         }
     });
-
-    //https://github.com/blueimp/jQuery-File-Upload
-    console.log(f[0]);
-    // now do something with file
 }
 
 $(function() {
