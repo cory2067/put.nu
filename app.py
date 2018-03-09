@@ -1,15 +1,15 @@
 from flask import Flask, abort, send_from_directory, redirect, render_template, url_for, flash, request, jsonify
+from werkzeug.utils import secure_filename
 import flask_login
 import os
 import sqlite3 # If we get a real user base we should migrate to Postgres.
 from passlib.hash import pbkdf2_sha256
 
+STORAGE_PATH = 'files'
 
 app = Flask(__name__)
 # TODO: before release change secret key to an environment variable (and different value)
 app.config['SECRET_KEY'] = '\x9d\xbc]\xda\xda\x94\x9fs\x8f\x1b)#\xa8C\xecW\xfdC,%v\x1e\x0f\xd7'
-
-STORAGE_PATH = 'files'
 
 # Login manager init
 login_manager = flask_login.LoginManager()
@@ -103,6 +103,21 @@ def login():
 			return jsonify({'success': False, 'error': "#login-password"});
 		except TypeError:
 			return jsonify({'success': False, 'error': "#login-user"});
+
+@app.route('/upload', methods=['POST'])
+def upload():
+	if 'file' not in request.files:
+		return "file not found"
+	f = request.files['file']
+	print(f.filename, "has been uploaded")
+	print("duration:", request.form['duration'])
+
+	filename = secure_filename(f.filename) # turn this into a hash
+	f.save(os.path.join(STORAGE_PATH, filename))
+
+	# This "return" should actually render a template, which is
+	# a fragment of the page to be injected into <main> via ajax
+	return 'http://127.0.0.1:8000/' + filename
 
 @app.route('/logout')
 def logout():

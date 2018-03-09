@@ -3,6 +3,21 @@ function read_file (f) {
         return;
     }
 
+    var formData = new FormData();
+    formData.append("file", f[0], f[0].name);
+    formData.append("duration", "a LONG time"); //testing
+
+    $.ajax({
+        url: '/upload',
+        data: formData,
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        success: function(resp) {
+            $("main").html(resp);
+        }
+    });
+
     //https://github.com/blueimp/jQuery-File-Upload
     console.log(f[0]);
     // now do something with file
