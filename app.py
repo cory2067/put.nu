@@ -115,9 +115,7 @@ def upload():
 	filename = secure_filename(f.filename) # turn this into a hash
 	f.save(os.path.join(STORAGE_PATH, filename))
 
-	# This "return" should actually render a template, which is
-	# a fragment of the page to be injected into <main> via ajax
-	return 'http://127.0.0.1:8000/' + filename
+	return render_template('uploaded.html', url='http://127.0.0.1:8000/' + filename)
 
 @app.route('/logout')
 def logout():

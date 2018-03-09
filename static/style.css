@@ -20,6 +20,9 @@ html, body {
 	-moz-transition: width 0.5s;
 	-o-transition: width 0.5s;
 }
+#output {
+	flex: 1;
+}
 main {
 	flex: 1;
 	display: flex;
