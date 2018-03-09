@@ -67,20 +67,22 @@ def account():
 def create_account():
 	with sqlite3.connect('putnu.db') as conn:
 		c = conn.cursor()
-		try:
-			email = request.form['email']
-		except KeyError:
-			email = ''
+		#	email = request.form['email']
+		email = '' # Not implemented yet, unclear if email will serve a function
 		username = request.form['username']
 		password = request.form['password']
-		password2 = request.form['password2']
+
+		c.execute("SELECT username FROM users WHERE username = ?", [username])
+		existing = c.fetchone();
+		if existing:
+			return jsonify({'success': False, 'error': '#register-user'})
 
 		hashed_pass = pbkdf2_sha256.encrypt(password)
 
 		c.execute('INSERT INTO users VALUES (?, ?, ?)', [username, email, hashed_pass])
 		conn.commit()
-	flash('Account created!')
-	return redirect(url_for('account'))
+
+		return jsonify({'success': True})
 
 @app.route('/login', methods = ['POST'])
 def login():

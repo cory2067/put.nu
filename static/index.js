@@ -44,6 +44,37 @@ $(function() {
         });
     });
 
+    $("#register-start").click(function() {
+        $("#login-modal").modal("hide");
+        $("#register-modal").modal("show");
+    });
+
+    $("#register-submit").click(function() {
+        $("#register-user").removeClass("is-invalid");
+        $("#register-password").removeClass("is-invalid");
+        $("#register-confirm").removeClass("is-invalid");
+
+        if ($("#register-password").val() !== $("#register-confirm").val()) {
+            $("#register-confirm").addClass("is-invalid");
+            return; // Passwords don't match
+        }
+
+        var login = {
+            username: $("#register-user").val(),
+            password: $("#register-password").val()
+        };
+
+        $.post("/create_account", login, function (resp) {
+            if (resp.success) {
+                $("#register-modal").modal("hide");
+                $("#guest-controls").hide();
+                $("#user-controls").fadeIn();
+            } else {
+                $(resp.error).addClass("is-invalid");
+            }
+        });
+    });
+
     setTimeout(function() {
         $('.flash-msg').slideUp();
     }, 1250);

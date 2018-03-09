@@ -1,30 +1,73 @@
-{% extends "layout.html" %}
-
-{% block content %}
-<div style="margin: 0 auto;">
-	<p>eyyy guy, log in why dont ya</p>
-	<form action="/login" method="post">
-		<input required size=30 type="text" placeholder="Username" name="username">
-		<br>
-		<input required size=30 type="password" placeholder="Password" name="password">
-		<br>
-		<input class="btn btn-primary" type="submit" aria-expanded="false" value="Sign in" aria-controls="collapseExample">
-	</form>
-	<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#signupContent" aria-expanded="false" aria-controls="signupContent">Register</button>
-	<div class="collapse" id="signupContent">
-		<div class="card card-block">
-			<form action="/create_account" method="post">
-				<input optional size=30 type="email" placeholder="Email (optional)" name="email">
-				<br>
-				<input optional size=30 type="text" placeholder="Username" name="username">
-				<br>
-				<input required size=30 type="password" placeholder="Password" name="password">
-				<br>
-				<input required size=30 type="password" placeholder="Reenter password" name="password2">
-				<br>
-				<input class="btn btn-primary" type="submit" value="Sign up">
-			</form>
-		</div>
-	</div>
+<!-- Login popup -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <div class="form-group">
+		    <label for="login-user">Username</label>
+		    <input class="form-control" id="login-user">
+			<div class="invalid-feedback">
+	          Username does not exist
+	        </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="login-password">Password</label>
+		    <input type="password" class="form-control" id="login-password">
+			<div class="invalid-feedback">
+	          Incorrect password
+	        </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="register-start">Register</button>
+        <button type="button" class="btn btn-primary" id="login-submit">Sign in</button>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock %}
+
+<!-- Register popup -->
+<div class="modal fade" id="register-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		  <div class="form-group">
+		    <label for="register-user">Username</label>
+		    <input class="form-control" id="register-user">
+			<div class="invalid-feedback">
+	          Username already taken
+	        </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="register-password">Password</label>
+		    <input type="password" class="form-control" id="register-password">
+			<div class="invalid-feedback">
+	          Invalid password <!-- unimplemented -->
+	        </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="register-confirm">Confirm Password</label>
+		    <input type="password" class="form-control" id="register-confirm">
+			<div class="invalid-feedback">
+	          Passwords do not match
+	        </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="register-submit">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -58,40 +58,7 @@
 		</footer>
 	</div>
 
-	<!-- Login popup -->
-	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-dialog-centered" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body">
-			  <div class="form-group">
-			    <label for="login-user">Username</label>
-			    <input class="form-control" id="login-user">
-				<div class="invalid-feedback">
-		          Username does not exist
-		        </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="login-password">Password</label>
-			    <input type="password" class="form-control" id="login-password">
-				<div class="invalid-feedback">
-		          Incorrect password
-		        </div>
-			  </div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary">Register</button>
-	        <button type="button" class="btn btn-primary" id="login-submit">Sign in</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-
+	{% include 'login.html' %}
 	<input id="file-upload" style="display: none" type="file" />
 	<script src="{{url_for('static', filename='index.js')}}"></script>
 </body>
