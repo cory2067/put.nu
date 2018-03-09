@@ -23,21 +23,22 @@
 			<h3>free file hosting</h3>
 		</header>
 		<div id="panel">
-			{% if logged_in %}
-			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My files">
-				<i class="fa fa-folder"></i>
-			</button>
-			<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="My links">
-				<i class="fa fa-link"></i>
-			</button>
-			<a href="/logout"><button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign out">
-				<i class="fa fa-sign-out"></i>
-			</button></a>
-			{% else %}
-			<a href="/account"><button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Sign in">
-				<i class="fa fa-sign-in"></i>
-			</button></a>
-			{% endif %}
+			<div id="user-controls" style="display: {{'block' if logged_in else 'none'}};">
+				<button type="button" class="btn btn-secondary">
+					<i class="fa fa-folder"></i>
+				</button>
+				<button type="button" class="btn btn-secondary">
+					<i class="fa fa-link"></i>
+				</button>
+				<a href="/logout"><button type="button" class="btn btn-secondary">
+					<i class="fa fa-sign-out"></i>
+				</button></a>
+			</div>
+			<div id="guest-controls" style="display: {{'none' if logged_in else 'block'}};">
+				<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#login-modal">
+					<i class="fa fa-sign-in"></i>
+				</button>
+			</div>
 		</div>
 		{% with messages = get_flashed_messages() %}
 		  {% if messages %}
@@ -55,6 +56,40 @@
 		<footer>
 			<p>created by meniscus memers</p>
 		</footer>
+	</div>
+
+	<!-- Login popup -->
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+			  <div class="form-group">
+			    <label for="login-user">Username</label>
+			    <input class="form-control" id="login-user">
+				<div class="invalid-feedback">
+		          Username does not exist
+		        </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="login-password">Password</label>
+			    <input type="password" class="form-control" id="login-password">
+				<div class="invalid-feedback">
+		          Incorrect password
+		        </div>
+			  </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary">Register</button>
+	        <button type="button" class="btn btn-primary" id="login-submit">Sign in</button>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 
 	<input id="file-upload" style="display: none" type="file" />

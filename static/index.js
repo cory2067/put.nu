@@ -22,7 +22,27 @@ $(function() {
 
     $("#file-upload").change(function() {
         read_file(this.files);
-    })
+    });
+
+    $("#login-submit").click(function() {
+        $("#login-user").removeClass("is-invalid");
+        $("#login-password").removeClass("is-invalid");
+
+        var login = {
+            username: $("#login-user").val(),
+            password: $("#login-password").val()
+        };
+
+        $.post("/login", login, function (resp) {
+            if (resp.success) {
+                $("#login-modal").modal("hide");
+                $("#guest-controls").hide();
+                $("#user-controls").fadeIn();
+            } else {
+                $(resp.error).addClass("is-invalid");
+            }
+        });
+    });
 
     setTimeout(function() {
         $('.flash-msg').slideUp();

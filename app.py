@@ -1,4 +1,4 @@
-from flask import Flask, abort, send_from_directory, redirect, render_template, url_for, flash, request
+from flask import Flask, abort, send_from_directory, redirect, render_template, url_for, flash, request, jsonify
 import flask_login
 import os
 import sqlite3 # If we get a real user base we should migrate to Postgres.
@@ -97,14 +97,10 @@ def login():
 				user = User()
 				user.id = username
 				flask_login.login_user(user)
-				flash('Logged in successfully!')
-				return redirect(url_for('account'))
-			else:
-				flash('Incorrect username or password')
-				return redirect(url_for('account'))
+				return jsonify({'success': True});
+			return jsonify({'success': False, 'error': "#login-password"});
 		except TypeError:
-			flash('Account does not exist')
-			return redirect(url_for('account'))
+			return jsonify({'success': False, 'error': "#login-user"});
 
 @app.route('/logout')
 def logout():
