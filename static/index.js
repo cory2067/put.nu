@@ -6,7 +6,7 @@ function read_file (f) {
     var formData = new FormData();
     formData.append("file", f[0], f[0].name);
     formData.append("duration", "a LONG time"); //testing
-    $('.text-container').hide();
+    $('.text-container').fadeOut('slow');
 
     $.ajax({
         url: '/upload',
@@ -15,7 +15,8 @@ function read_file (f) {
         contentType: false,
         processData: false,
         success: function(resp) {
-            $("main").html(resp);
+            $("main").html(resp).hide().fadeIn('slow');
+            $("#progress").css('left', '100%').fadeOut('slow');
         },
         xhr: function(resp) {
             var xhr = $.ajaxSettings.xhr();
@@ -23,7 +24,7 @@ function read_file (f) {
                 // upload progress
                 if (e.lengthComputable) {
                     var percent = 100 * e.loaded / e.total;
-                    $('#progress').css('width', percent + '%');
+                    $('#progress').css('right', (100-percent) + '%');
                     console.log(percent);
                 }
             };

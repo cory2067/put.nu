@@ -11,14 +11,17 @@ html, body {
 	justify-content: center
 }
 #progress {
+	position: absolute;
 	background: #34A088;
 	height: 100%;
-	width: 0%;
+	left: 0;
+	right: 100%;
+	z-index: 1;
 
-	transition: width 0.5s;
-	-webkit-transition: width 0.5s;
-	-moz-transition: width 0.5s;
-	-o-transition: width 0.5s;
+	transition: left 1s, right 0.5s;
+	-webkit-transition: left 1s, right 0.5s;
+	-moz-transition: left 1s, right 0.5s;
+	-o-transition: left 1s, right 0.5s;
 }
 #output {
 	flex: 1;
@@ -28,10 +31,12 @@ main {
 	display: flex;
 	align-items: center;
 	width: 100%;
+	z-index: 0;
 }
 header {
 	background: #34A088;
 	padding: 10px;
+	z-index: 2;
 }
 .text-container {
 	margin: 0 auto;
@@ -76,6 +81,7 @@ h3 {
 footer {
 	background: #3d3d3d;
 	padding: 5px;
+	z-index: 2;
 }
 footer p {
 	color: #eee;
